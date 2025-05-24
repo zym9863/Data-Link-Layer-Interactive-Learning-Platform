@@ -101,6 +101,14 @@ interface FrameField {
   width: string
 }
 
+interface FieldDetail {
+  name: string
+  length: string
+  purpose: string
+  currentValue: string
+  description: string
+}
+
 const selectedExample = ref('')
 const selectedField = ref('')
 
@@ -182,7 +190,7 @@ const frameFields = computed<FrameField[]>(() => {
   ]
 })
 
-const fieldDetails = computed(() => ({
+const fieldDetails = computed<Record<string, FieldDetail>>(() => ({
   '前导码': {
     name: '前导码 (Preamble)',
     length: '7 字节',
